@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-cyan-950/90 text-cyan">
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex items-center justify-center px-6">
+    <div class="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+
+      <!-- Left Side Content -->
+      <div>
+        <h1 class="text-white md:text-6xl font-bold mb-4">
+          Hi, I'm 
+          <span class="text-white">Humaira Jannat Meem</span>
+        </h1>
+
+        <p class="text-gray-300 text-lg mb-6 leading-relaxed">
+          I am a passionate web developer. I love developing 
+          responsive, and user-friendly websites using HTML, Tailwind CSS,
+          and JavaScript.
+        </p>
+
+        <!-- Buttons -->
+        <div class="flex gap-4">
+          <button 
+            onclick="contactMe()"
+            class="px-6 py-3 bg-cyan-500 text-white rounded-lg font-semibold 
+                   hover:bg-cyan-600 hover:scale-105 transition duration-300">
+            Contact Me
+          </button>
+
+          <a 
+            href="meem_cv.pdf" 
+            download
+            class="px-6 py-3 border border-cyan-400 text-cyan-400 rounded-lg font-semibold 
+                   hover:bg-cyan-400 hover:text-gray-950 hover:scale-105 transition duration-300">
+            Download CV
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Side Image -->
+      <div class="flex justify-center">
+        <img 
+          src="my_pic.png" 
+          alt="Profile Image"
+          class="w-72 h-72 md:w-96 md:h-96 object-cover rounded-full border-4 border-cyan-400 shadow-lg shadow-cyan-500/30 hover:scale-105 transition duration-300"
+        />
+      </div>
+
+    </div>
+  </section>
+
+  <script src="navbar.js"></script>
+
+
+  <!-- JavaScript -->
+  <script>
+    function contactMe() {
+      alert("You clicked Contact Me!");
+  
+  }
+
+  </script>
+
+</body>
+</html>
