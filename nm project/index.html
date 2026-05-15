@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Numerical Differentiation Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.umd.min.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Numerical Differentiation Calculator</h1>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Enter Tabulated Data</h2>
+      <textarea id="x-values" rows="2" placeholder="x values: e.g., 1, 2, 3, 4"></textarea>
+      <textarea id="y-values" rows="2" placeholder="f(x) values: e.g., 1, 4, 9, 16"></textarea>
+      <input type="number" id="x-point" placeholder="x where derivative is needed">
+      <select id="method">
+        <option value="forward">Newton Forward</option>
+        <option value="backward">Newton Backward</option>
+        <option value="stirling">Stirling</option>
+        <option value="divided">Divided Difference</option>
+      </select>
+      <select id="order">
+        <option value="1">1st Derivative</option>
+        <option value="2">2nd Derivative</option>
+      </select>
+      <button onclick="differentiate()">Calculate</button>
+      <button onclick="compareMethods()">Compare Methods</button>
+      <button onclick="exportGraph()">Export Graph</button>
+    </section>
+
+    <section class="card">
+      <h2>Results</h2>
+      <p id="result-formula"></p>
+      <p id="result-substitution"></p>
+      <p id="result-derivative"></p>
+      <p id="result-u-h"></p>
+    </section>
+
+    <section class="card">
+      <h2>Graph</h2>
+      <canvas id="graph" width="600" height="400"></canvas>
+    </section>
+
+    <section class="card">
+      <details>
+        <summary><h2>📘 Educational Resources</h2></summary>
+        <div>
+          <p><strong>Forward Difference:</strong><br>
+          \( f'(x_0) = \frac{1}{h}[\Delta y_0 - \frac{1}{2}\Delta^2 y_0 + \frac{1}{3}\Delta^3 y_0 - \cdots] \)</p>
+          <p><strong>Backward Difference:</strong><br>
+          \( f'(x_n) = \frac{1}{h}[\nabla y_n + \frac{1}{2}\nabla^2 y_n + \frac{1}{3}\nabla^3 y_n + \cdots] \)</p>
+          <p><strong>Stirling:</strong><br>
+          \( f'(x_0) = \frac{1}{h} \left[ \frac{\Delta y_0 + \nabla y_0}{2} - \frac{\Delta^3 y_0 + \nabla^3 y_0}{12} + \cdots \right] \)</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><h2>🎓 Tutorials</h2></summary>
+        <ol>
+          <li>Enter equally spaced x and f(x) values</li>
+          <li>Select the method and point of differentiation</li>
+          <li>View result, formula, and graph</li>
+          <li>Use "Compare Methods" to view multiple outputs</li>
+        </ol>
+      </details>
+    </section>
+
+    <!-- This section will be created dynamically by JS if needed -->
+    <!-- <section id="compare-card" class="card"></section> -->
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

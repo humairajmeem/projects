@@ -1,0 +1,64 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Numerical Differentiation Calculator</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.11.1/math.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+    }
+    label, select, input {
+      display: block;
+      margin-top: 10px;
+    }
+    .result {
+      margin-top: 20px;
+      background-color: #f2f2f2;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Numerical Differentiation Calculator</h1><label for="func">Function f(x):</label> <input type="text" id="func" placeholder="e.g. sin(x)" />
+
+<label for="x">Point x:</label> <input type="number" id="x" value="1" />
+
+<label for="h">Step size h:</label> <input type="number" id="h" step="0.01" value="0.01" />
+
+<label for="method">Method:</label> <select id="method"> <option value="forward">Forward Difference</option> <option value="backward">Backward Difference</option> <option value="central">Central Difference</option> </select>
+
+<button onclick="calculateDerivative()">Calculate Derivative</button>
+
+  <div class="result" id="output"></div>  <script>
+    function calculateDerivative() {
+      const func = document.getElementById("func").value;
+      const x = parseFloat(document.getElementById("x").value);
+      const h = parseFloat(document.getElementById("h").value);
+      const method = document.getElementById("method").value;
+
+      try {
+        const f = (x) => math.evaluate(func, { x });
+        let derivative;
+
+        if (method === "forward") {
+          derivative = (f(x + h) - f(x)) / h;
+        } else if (method === "backward") {
+          derivative = (f(x) - f(x - h)) / h;
+        } else if (method === "central") {
+          derivative = (f(x + h) - f(x - h)) / (2 * h);
+        }
+
+        document.getElementById("output").innerHTML =
+          <strong>Estimated Derivative:</strong> ${derivative.toFixed(6)};
+      } catch (err) {
+        document.getElementById("output").innerHTML =
+          <span style='color:red;'>Error: ${err.message}</span>;
+      }
+    }
+  </script></body>
+</html>
